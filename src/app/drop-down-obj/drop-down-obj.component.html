@@ -1,0 +1,46 @@
+<p>drop-down-obj works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Languages</mat-label>
+    <mat-select (selectionChange) ="updateLanguage($event.value)">
+      <mat-option *ngFor="let option of options" [value]="option" >
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> &nbsp;&nbsp;
+  <button mat-flat-button
+value="Add"
+color="primary"
+(click)="openLanguageDialog()"  
+  >Add</button>
+<div class="container" layout="row">
+    Languages<br/>
+    <ng-container *ngIf="!detailsArr.length">
+        No language selected. Kindly add a langauge
+    </ng-container>
+    <mat-card *ngFor= "let d of detailsArr" class="smallCard"> 
+        <button class="close-mat-button">X</button>
+        <mat-card-title> {{d?.title }}</mat-card-title>
+
+<mat-card-content>
+    {{d?.description}}
+</mat-card-content>
+    </mat-card>
+</div>
+  <ng-template #language>
+Enter details for {{currLanguage}} language
+    <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
+       
+        <input id = "default" type = "checkbox" name = "default" ngModel />
+        <label for="default">Set language as default</label><br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="Enter title here" name ="title" value="" ngModel required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput placeholder="Enter description here" name ="description" value="" ngModel>
+  </mat-form-field>
+  <button mat-raised-button type="submit">Add details</button>
+    </form>
+  </ng-template>

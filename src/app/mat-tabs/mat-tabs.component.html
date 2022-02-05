@@ -1,0 +1,38 @@
+<p>mat-tabs works!</p>
+<div class= "container-fluid">
+    <div class = "row mt-5">
+        <div class = "col-md-8 ml-auto mr-auto">
+
+
+
+            <mat-tab-group (selectedTabChange)="tabChange($event)" [selectedIndex]="index">
+                <mat-tab label="Calorie Count">
+                    <div class="alert alert-info">
+                        keeping all your calories logged
+                    </div>
+                </mat-tab>
+                <mat-tab label="Calorie Count2">
+                    <div class="alert alert-info">
+                        keeping all your calories logged2
+                    </div>
+                </mat-tab>
+                <mat-tab label="Calorie Count3">
+                    <div class="alert alert-info">
+                        keeping all your calories logged3
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+    <div class= "col-md-8 mt-5 ml-auto mr-auto">
+        <mat-form-field class="mt-5">
+            <mat-label>change your tabs from here</mat-label>
+            <mat-select [(value)]="index">
+                <mat-option value="0">Calorie Count</mat-option>
+                <mat-option value="1">Calorie Count2</mat-option>
+                <mat-option value="2">Calorie Count3</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    {{message}}
+</div>
